@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+  <meta charset="utf-8" />
+  <title>智慧餐厅</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="stylesheet" href="css/bootstrap.css"/>
+  <link rel="stylesheet" href="css/animate.css"/>
+  <link rel="stylesheet" href="css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="css/simple-line-icons.css"/>
+  <link rel="stylesheet" href="css/font.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="css/main.css">
+    <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+</head>
+<body class="">
+  <section class="vbox">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+      <div class="navbar-header aside bg-black nav-xs">
+        <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+          <i class="icon-list"></i>
+        </a>
+        <a href="index.html" class="navbar-brand text-lt block dk">
+          <span class="center-block">智慧餐厅</span>
+        </a>
+        <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+          <i class="icon-settings"></i>
+        </a>
+      </div>
+      <ul class="nav navbar-nav hidden-xs none">
+        <li>
+          <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+            <i class="fa fa-indent text"></i>
+            <i class="fa fa-dedent text-active"></i>
+          </a>
+        </li>
+      </ul>
+        <div class="navbar-form navbar-left " role="search">
+            钢管厂小郡肝串串（沙河店）
+        </div>
+      <div class="navbar-right ">
+        <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+            <li class="hidden-xs" style="line-height: 60px;">
+            2018年07月08日     星期天     22:31:30
+
+</li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="images/a0.png" alt="...">
+              </span>
+              Admin
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu animated fadeInRight">
+              <li>
+                <span class="arrow top"></span>
+                <a href="index.user.html">个人中心</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <!--<a href="signin.html" data-toggle="ajaxModal" >退出</a>-->
+                <a href="signin.html">退出</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <section>
+      <section class="hbox stretch">
+        <!-- .aside -->
+        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+          <section class="vbox">
+            <section class="w-f-md scrollable">
+              <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                <!-- nav -->
+                <nav class="nav-primary hidden-xs">
+                  <ul class="nav bg clearfix">
+                    <li>
+                      <a class="active" href="index.html">
+                        <img src="images/dinner.png">
+                        <span class="font-bold">正餐</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="index.fast.order.html">
+                        <img src="images/fast.png">
+                        <span class="font-bold">快餐</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/takeaway.png">
+                        <span class="font-bold">外卖</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/member.png">
+                        <span class="font-bold">会员</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="order.html">
+                        <img src="images/orderlist.png">
+                        <span class="font-bold">订单</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/destine.png">
+                        <span class="font-bold">预定</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/queue.png">
+                        <span class="font-bold">排队</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="index.more.html">
+                        <img src="images/more.png">
+                        <span class="font-bold">更多</span>
+                      </a>
+                    </li>
+                    <!--<li class="m-b hidden-nav-xs"></li>-->
+                  </ul>
+                </nav>
+                <!-- / nav -->
+              </div>
+            </section>
+          </section>
+        </aside>
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox">
+            <section class="panel panel-default">
+              <div class="row wrapper">
+                <div class="m-b-xs pull-right text-right">
+                  <select class="input-sm form-control input-s-sm inline v-middle">
+                    <option value="0">所有支付</option>
+                    <option value="1">现金</option>
+                    <option value="2">支付宝</option>
+                    <option value="3">微信</option>
+                    <option value="4">银行卡</option>
+                  </select>
+                  <select class="input-sm form-control input-s-sm inline v-middle">
+                    <option value="0">全部时间</option>
+                    <option value="1">今天</option>
+                    <option value="2">本周</option>
+                    <option value="3">本月</option>
+                    <option value="4">本年</option>
+                  </select>
+                  <button class="btn btn-sm btn-default">Apply</button>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-striped b b-light text-center">
+                  <thead>
+                  <tr>
+                    <th class="text-center">序号</th>
+                    <th class="text-center">订单编号</th>
+                    <th class="text-center">类型</th>
+                    <th class="text-center">座号</th>
+                    <th class="text-center">消费金额</th>
+                    <th class="text-center">支付方式</th>
+                    <th class="text-center">消费时间</th>
+                    <th class="text-center">消费者</th>
+                    <th class="text-center">电话</th>
+                    <th class="text-center">收银员</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>0683201804121314001</td>
+                    <td>堂食</td>
+                    <td>A27</td>
+                    <td>¥389</td>
+                    <td>微信</td>
+                    <td>2018.04.12 13:14</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>钱多</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>0683201804121314001</td>
+                    <td>堂食</td>
+                    <td>A27</td>
+                    <td>¥389</td>
+                    <td>微信</td>
+                    <td>2018.04.12 13:14</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>钱多</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>0683201804121314001</td>
+                    <td>堂食</td>
+                    <td>A27</td>
+                    <td>¥389</td>
+                    <td>微信</td>
+                    <td>2018.04.12 13:14</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>钱多</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <footer class="m">
+                <div class="row">
+                  <div class="col-sm-4 text-right text-center-xs pull-right">
+                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                      <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </footer>
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>
+  </section>
+
+  <div class="modal fade" id="modal-form" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body wrapper-lg">
+          <div class="row">
+            <h4 class="text-center m-t-n">餐桌操作</h4>
+            <a href="#" class="btn btn-primary btn-block m-b-sm">开始点餐</a>
+            <a href="#" class="btn btn-info btn-block m-b-sm">开台</a>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.js"></script>
+  <!-- App -->
+  <script src="js/app.js"></script>
+  <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/app.plugin.js"></script>
+
+</body>
+</html>

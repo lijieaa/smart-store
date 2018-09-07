@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+    <meta charset="utf-8"/>
+    <title>智慧餐厅</title>
+    <meta name="description"
+          content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/simple-line-icons.css"/>
+    <link rel="stylesheet" href="css/font.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/main.css">
+    <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body class="">
+<section class="vbox">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+        <div class="navbar-header aside bg-black nav-xs">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                <i class="icon-list"></i>
+            </a>
+            <a href="index.html" class="navbar-brand text-lt block dk">
+                <span class="center-block">智慧餐厅</span>
+            </a>
+            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                <i class="icon-settings"></i>
+            </a>
+        </div>
+        <ul class="nav navbar-nav hidden-xs none">
+            <li>
+                <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+                    <i class="fa fa-indent text"></i>
+                    <i class="fa fa-dedent text-active"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="navbar-form navbar-left " role="search">
+            钢管厂小郡肝串串（沙河店）
+        </div>
+        <div class="navbar-right ">
+            <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+                <li class="hidden-xs" style="line-height: 60px;">
+                    2018年07月08日 星期天 22:31:30
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="images/a0.png" alt="...">
+              </span>
+                        Admin
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight">
+                        <li>
+                            <span class="arrow top"></span>
+                            <a href="index.user.html">个人中心</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <!--<a href="signin.html" data-toggle="ajaxModal" >退出</a>-->
+                            <a href="signin.html">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <section class="hbox stretch">
+            <!-- .aside -->
+            <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+                <section class="vbox">
+                    <section class="w-f-md scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                             data-size="10px" data-railOpacity="0.2">
+                            <nav class="nav-primary hidden-xs">
+                                <ul class="nav bg clearfix">
+                                    <li>
+                                        <a class="active" href="index.html">
+                                            <img src="images/dinner.png">
+                                            <span class="font-bold">正餐</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index.fast.order.html">
+                                            <img src="images/fast.png">
+                                            <span class="font-bold">快餐</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/takeaway.png">
+                                            <span class="font-bold">外卖</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/member.png">
+                                            <span class="font-bold">会员</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="order.html">
+                                            <img src="images/orderlist.png">
+                                            <span class="font-bold">订单</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/destine.png">
+                                            <span class="font-bold">预定</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/queue.png">
+                                            <span class="font-bold">排队</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index.more.html">
+                                            <img src="images/more.png">
+                                            <span class="font-bold">更多</span>
+                                        </a>
+                                    </li>
+                                    <!--<li class="m-b hidden-nav-xs"></li>-->
+                                </ul>
+                            </nav>
+                        </div>
+                    </section>
+                </section>
+            </aside>
+            <!-- /.aside -->
+
+            <section id="content" class="no-padder">
+                <section class="vbox">
+                    <section id="bjax-target">
+                        <section class="hbox stretch">
+                            
+                            <aside class="aside-lg no-padder bg-white">
+                                <section class="vbox">
+                                    <section class="scrollable w-f">
+                                        <header class="receipt-info-list padder">
+                                            <h3>桌台号：大厅 A27</h3>
+                                            <p>订单号：1026584020180622</p>
+                                            <p>开台时间：2018-06-22 16:28:09</p>
+                                        </header>
+                                        <ul class="dish-info-list list-group no-bg no-borders auto m-t-n-xxs">
+                                            <li class="list-group-item b-b b-dark display-flex display-flex-justify-between">
+                                                <div>菜品</div>
+                                                <span>单价</span>
+                                                <span>数量</span>
+                                            </li>
+                                            <li class="list-group-item b-b b-dark display-flex display-flex-justify-between">
+                                                <div>青城山老腊肉烧干豇豆</div>
+                                                <div>
+                                                    <span class="display-flex display-flex-align-center">
+                                                        <span>¥76</span>
+                                                        <span class="btn-p-m btn-p-m-plus m-l-sm"></span>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <span class="display-flex display-flex-align-center">
+                                                        <span>¥76</span>
+                                                        <span class="btn-p-m btn-p-m-minus m-l-sm"></span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item b-b b-dark display-flex display-flex-justify-between">
+                                                <div>青城山老腊肉烧干豇豆</div>
+                                                <div>
+                                                    <span class="display-flex display-flex-align-center">
+                                                        <span>¥76</span>
+                                                        <span class="btn-p-m btn-p-m-plus m-l-sm"></span>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <span class="display-flex display-flex-align-center">
+                                                        <span>¥76</span>
+                                                        <span class="btn-p-m btn-p-m-minus m-l-sm"></span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item b-b b-dark display-flex display-flex-justify-between">
+                                                <div>青城山老腊肉烧干豇豆</div>
+                                                <div>
+                                                    <span class="display-flex display-flex-align-center">
+                                                        <span>¥76</span>
+                                                        <span class="btn-p-m btn-p-m-plus m-l-sm"></span>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <span class="display-flex display-flex-align-center">
+                                                        <span>¥76</span>
+                                                        <span class="btn-p-m btn-p-m-minus m-l-sm"></span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </section>
+                                    <footer class="footer bg-light tips-info display-flex display-flex-justify-between display-flex-align-center">
+                                        <span>数量： 4</span>
+                                        <span>合计： ¥166</span>
+                                    </footer>
+                                </section>
+                            </aside>
+                            
+                            <section>
+                                <div class="row m no-padder col-sm-4 pull-right">
+                                    <div class="input-group pull-right">
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">搜索</button>
+                                      </span>
+                                    </div>
+                                </div>
+                                <section class="hbox stretch">
+                                    <section>
+                                        <section class="vbox">
+                                            <section class="scrollable w-f-lg padder">
+                                                <div class="row row-sm dining-table-list">
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <img src="images/dish-active.jpg" alt="" class="r r-2x img-full">
+                                                                <span class="dining-table-num">
+                                                                    <span class="pos-rlt">青城山老腊肉烧干豇豆</span>
+                                                                    <span class="pos-rlt">QCSLLRSGJD</span>
+                                                                </span>
+                                                                <span class="dining-table-price-time">¥78/份</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <img src="images/dish-none.jpg" alt="" class="r r-2x img-full">
+                                                                <span class="dining-table-num">
+                                                                    <span class="pos-rlt">青城山老腊肉烧干豇豆</span>
+                                                                    <span class="pos-rlt">QCSLLRSGJD</span>
+                                                                </span>
+                                                                <span class="dining-table-price-time">¥78/份</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <img src="images/dish-none.jpg" alt="" class="r r-2x img-full">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <img src="images/dish-none.jpg" alt="" class="r r-2x img-full">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 m-b-md">
+                                                        <div class="item">
+                                                            <div class="pos-rlt">
+                                                                <a href="#"><img src="images/dish-none.jpg" alt=""
+                                                                                 class="r r-2x img-full"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix visible-xs"></div>
+                                                </div>
+                                            </section>
+                                            <footer class="footer bg-light tips-info no-padder" style="bottom: 65px;">
+                                                <div class="btn-group btn-group-justified m-n" style="height: 48px;">
+                                                    <span class="btn btn-default">赠菜</span>
+                                                    <span class="btn btn-default">取单</span>
+                                                    <span class="btn btn-default">挂单</span>
+                                                    <span class="btn btn-default">清空</span>
+                                                </div>
+                                            </footer>
+                                        </section>
+                                    </section>
+                                    <aside class="aside-md bg-light bg-white" id="sidebar">
+                                        <section class="vbox animated fadeInRight b-r b-l b-light">
+                                            <section class="w-f-xl scrollable hover">
+                                                <ul class="room-type-nav list-group no-bg no-borders auto m-t-n-xxs">
+                                                    <li class="list-group-item b-b b-light active">
+                                                        <div class="clear text-center">
+                                                            <div><a href="#">全部</a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item b-b b-light">
+                                                        <div class="clear text-center">
+                                                            <div><a href="#">招牌热卖</a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item b-b b-light">
+                                                        <div class="clear text-center">
+                                                            <div><a href="#">凉菜</a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item b-b b-light">
+                                                        <div class="clear text-center">
+                                                            <div><a href="#">炒菜</a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item b-b b-light">
+                                                        <div class="clear text-center">
+                                                            <div><a href="#">干锅</a></div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </section>
+                                            <footer class="footer tips-info no-padder padder-r"  style="bottom: 65px;">
+                                                <div class="btn-group btn-group-justified m-n width-auto" style="height: 48px;">
+                                                    <a href="payresult.html" class="btn btn-default">快速结账</a>
+                                                    <a href="index.order.accounts.html"class="btn btn-default active">结账</a>
+                                                </div>
+                                            </footer>
+                                        </section>
+                                    </aside>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+            </section>
+        </section>
+    </section>
+</section>
+
+<div class="modal fade" id="modal-form" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body wrapper-lg">
+                <div class="row">
+                    <h4 class="text-center m-t-n">餐桌操作</h4>
+                    <a href="index.order.html?" class="btn btn-primary btn-block m-b-sm">开始点餐</a>
+                    <a href="#" class="btn btn-info btn-block m-b-sm">开台</a>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.js"></script>
+<!-- App -->
+<script src="js/app.js"></script>
+<script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/app.plugin.js"></script>
+
+</body>
+</html>
