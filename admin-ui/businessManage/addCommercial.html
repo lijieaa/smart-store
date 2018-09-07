@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>新增商户</title>
+    <meta name="description" content="Static &amp; Dynamic Tables" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!-- page specific plugin styles -->
+    <!-- text fonts -->
+    <link rel="stylesheet" href="../assets/css/fonts.googleapis.com.css" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="../assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../assets/css/ace-part2.min.css" class="ace-main-stylesheet"/>
+    <![endif]-->
+    <link rel="stylesheet" href="../assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="../assets/css/ace-rtl.min.css" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../assets/css/ace-ie.min.css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="../assets/dist/css/global.css" />
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+    <script src="../assets/js/ace-extra.min.js"></script>
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+    <script src="../assets/js/html5shiv.min.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="no-skin">
+
+<div id="editCom">
+    <div id="navbar" class="navbar navbar-default ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-header pull-left">
+                <a href="../index.html" class="navbar-brand">
+                    <small>
+                        <!--<i class="fa fa-leaf"></i>-->
+                        <img src="../assets/images/project/logo.png" alt="">
+                        <span class="title-sty">后台管理系统</span>
+                    </small>
+                </a>
+            </div>
+
+            <div class="navbar-middle">
+                <ul>
+                    <li class="active">商户管理</li>
+                    <li>用户管理</li>
+                    <li>广告管理</li>
+                    <li>系统管理</li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <span id="redirectPerson">你好，<span>张天启</span></span>
+                <span>|</span>
+                <span class="exit">退出</span>
+            </div>
+        </div><!-- /.navbar-container -->
+    </div>
+    <div class="main-container ace-save-state" id="main-container">
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="float-left">
+                            <span class="header-list"></span><span class="header-font-style">新增商户</span>
+                        </div>
+                        <div class="float-right">
+                            <a href="businessManagement.html" class="add-style color-white"></i>返回</a>
+                        </div>
+                    </div><!-- /.page-header -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <form class="form-horizontal" id="validation-form">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" >店铺名称:</label>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="clearfix">
+                                                <input type="text" name="storeName" v-model="editList.storeName"
+                                                       id="storeName"
+                                                       class="col-xs-12 col-sm-8" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right">店铺级别:</label>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="clearfix">
+                                                <input type="text" name="storeLevel" v-model="editList.storeLevel"
+                                                       id="storeLevel" class="col-xs-12 col-sm-8"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right">行业列表:</label>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="clearfix">
+                                                <input type="text" name="industryList" v-model="editList.industryList"
+                                                       id="list"
+                                                       class="col-xs-12 col-sm-8" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" >店铺状态:</label>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="clearfix">
+                                                <input type="text" name="storeStatus" v-model="editList.storeStatus"
+                                                       class="col-xs-12 col-sm-8"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" >套餐类型:</label>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="clearfix">
+                                                <input type="text" name="setClass" v-model="editList.setClass"
+                                                       class="col-xs-12 col-sm-8"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" >套餐期限:</label>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="clearfix">
+                                                <input type="text" name="setPeriod" v-model="editList.setPeriod"
+                                                       class="col-xs-12 col-sm-8"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" >负责人:</label>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="clearfix">
+                                                <input type="text" name="mainPerson" v-model="editList.mainPerson"
+                                                       class="col-xs-12 col-sm-8"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" >联系电话:</label>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="clearfix">
+                                                <input type="text" name="telStore" v-model="editList.telStore"
+                                                       id="telStore"
+                                                       class="col-xs-12 col-sm-8" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-4"></div>
+                                    <div class="clearfix form-actions">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button class="btn btn-info" type="submit" id="submit">
+                                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                                提交
+                                            </button>
+
+                                            &nbsp; &nbsp; &nbsp;
+                                            <button class="btn" type="reset">
+                                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                重置
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </div><!-- /.page-content -->
+            </div>
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">Ace</span>
+							Application &copy; 2013-2014
+						</span>
+
+                    &nbsp; &nbsp;
+                    <span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+</div>
+
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="../assets/js/jquery-2.1.4.min.js"></script>
+
+<!-- <![endif]-->
+<script src="../assets/dist/js/vue.js"></script>
+<!--[if IE]>
+<script src="../assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="../assets/js/jquery.dataTables.min.js"></script>
+<script src="../assets/js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="../assets/js/dataTables.buttons.min.js"></script>
+<script src="../assets/js/buttons.flash.min.js"></script>
+<script src="../assets/js/buttons.html5.min.js"></script>
+<script src="../assets/js/buttons.print.min.js"></script>
+<script src="../assets/js/buttons.colVis.min.js"></script>
+<script src="../assets/js/dataTables.select.min.js"></script>
+<script src="../assets/dist/js/common.js"></script>
+<script src="../assets/js/jquery.validate.min.js"></script>
+<!-- ace scripts -->
+<script src="../assets/js/ace-elements.min.js"></script>
+<script src="../assets/js/ace.min.js"></script>
+<script src="../assets/dist/js/main.js"></script>
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    var vue1 =  new Vue({
+        el: '#editCom',
+        data: {
+            editList: {
+                storeName: '',
+                storeLevel: '',
+                industryList: '',
+                storeStatus: '',
+                setClass: '',
+                setPeriod: '',
+                mainPerson: '',
+                telStore: '',
+            }
+        },
+        mount: function () {
+            let _this = this;
+
+        }
+    });
+    $("button[type='reset']").click(function () {
+        vue1.$data.editList = {
+            storeName: '',
+            storeLevel: '',
+            industryList: '',
+            storeStatus: '',
+            setClass: '',
+            setPeriod: '',
+            mainPerson: '',
+            telStore: '',
+        }
+    });
+    jQuery(function($) {
+        jQuery.validator.addMethod("isMobile", function(value, element) {
+            var length = value.length;
+            var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(19[0-9]{9})|(16[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+            return this.optional(element) || (length == 11 && mobile.test(value));
+        }, "请正确填写您的手机号码");
+        var $form = $('#validation-form').validate({
+            errorElement: 'div',
+            errorClass: 'help-block',
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                storeName: {
+                    required: true
+                },
+                storeLevel: {
+                    required: true
+                },
+                industryList: {
+                    required: true
+                },
+                storeStatus: {
+                    required: true
+                },
+                setClass: {
+                    required: true
+                },
+                setPeriod: {
+                    required: true,
+                    digits: true
+                },
+                mainPerson: {
+                    required: true
+                },
+                telStore: {
+                    required: true,
+                    isMobile: true
+                }
+            },
+            messages: {
+                storeName:'此字段为必填',
+                storeLevel:'此字段为必填',
+                industryList:'此字段为必填',
+                storeStatus:'此字段为必填',
+                setClass:'此字段为必填',
+                setPeriod: {
+                    required: '此字段为必填',
+                    digits: '只能输入数字',
+                },
+                mainPerson:'此字段为必填',
+                telStore: {
+                    isMobile: '请输入正确的电话号码',
+                    required: '此字段为必填'
+                },
+            },
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            },
+
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error');
+                $(e).remove();
+            },
+
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent());
+            },
+
+            submitHandler: function (form) {
+
+                // var data = $(form).serializeObject();
+                _this.sureSubmit();
+
+            },
+            invalidHandler: function (form) {
+
+            }
+        });
+    })
+</script>
+</body>
+</html>

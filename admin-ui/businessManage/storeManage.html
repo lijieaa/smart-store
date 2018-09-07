@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>店铺管理</title>
+
+    <meta name="description" content="Static &amp; Dynamic Tables" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+    <!-- page specific plugin styles -->
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="../assets/css/fonts.googleapis.com.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="../assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../assets/css/ace-part2.min.css" class="ace-main-stylesheet"/>
+    <![endif]-->
+    <link rel="stylesheet" href="../assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="../assets/css/ace-rtl.min.css" />
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../assets/css/ace-ie.min.css"/>
+
+    <![endif]-->
+    <link rel="stylesheet" href="../assets/dist/css/global.css" />
+    <link rel="stylesheet" href="../assets/dist/css/dpManage.css" />
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
+    <script src="../assets/js/ace-extra.min.js"></script>
+
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+    <script src="../assets/js/html5shiv.min.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="../assets/dist/js/vue.js"></script>
+</head>
+<style>
+    .main-content-inner {
+        width: 100%;
+        margin: 0 auto;
+        float: left;
+    }
+    .no-skin .sidebar {
+        background-color: #293038;
+    }
+    .no-skin .sidebar-toggle {
+        background-color: #293038;
+        border-bottom: none;
+        /*border-color: #293038;*/
+    }
+    .page-content{
+        background: #f2f2f2;
+    }
+    .page-content{
+        margin-top: 0;
+    }
+</style>
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default          ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only">Toggle sidebar</span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-header pull-left">
+            <a href="../index.html" class="navbar-brand">
+                <small>
+                    <!--<i class="fa fa-leaf"></i>-->
+                    <img src="../assets/images/project/logo.png" alt="">
+                    <span class="title-sty">后台管理系统</span>
+                </small>
+            </a>
+        </div>
+
+        <div class="navbar-middle">
+            <ul>
+                <li class="active">商户管理</li>
+                <li>用户管理</li>
+                <li>广告管理</li>
+                <li>系统管理</li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <span id="redirectPerson">你好，<span>张天启</span></span>
+            <span>|</span>
+            <span class="exit">退出</span>
+        </div>
+    </div><!-- /.navbar-container -->
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.loadState('main-container')}catch(e){}
+    </script>
+
+    <div id="sidebar" class="sidebar  responsive   ace-save-state">
+        <script type="text/javascript">
+            try{ace.settings.loadState('sidebar')}catch(e){}
+        </script>
+
+
+
+        <ul class="left-page-menu"> <!--//left-page-menu-->
+
+            <li class="">
+                <a href="dpManage.html" class="">
+                    <span>店铺概况</span>
+                    <!--<b class="arrow fa fa-angle-down"></b>-->
+                </a>
+            </li>
+            <li class="rest-drop active">
+                <a href="#" class="">
+                    <!--<i class="menu-icon fa fa-tachometer"></i>-->
+                    餐厅管理
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <ul style="display: block">
+                    <li class="sub-menu-manage">
+                        <a href="../1.html">菜品管理</a>
+                    </li>
+                    <li class="sub-menu-manage">
+                        <a href="../1.html">餐桌管理</a>
+                    </li>
+                    <li class="sub-menu-manage">
+                        <a href="../1.html">外卖管理</a>
+                    </li>
+                    <li class="sub-menu-manage">
+                        <a href="../1.html">打印管理</a>
+                    </li>
+                    <li class="sub-menu-manage">
+                        <a href="update.html">付款方式</a>
+                    </li>
+                    <li class="sub-menu-manage">
+                        <a href="storeManage.html" class="active">店铺管理</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="../personManage.html" class="">
+                    <!--<i class="menu-icon fa fa-tachometer"></i>-->
+                    员工管理
+                    <!--<b class="arrow fa fa-angle-down"></b>-->
+                </a>
+            </li>
+
+            <li class="">
+                <a href="#" class="">
+                    营销管理
+                </a>
+            </li>
+        </ul><!-- /.nav-list -->
+
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i class="ace-icon fa fa-angle-double-left" ></i>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="page-content">
+                <div class="page-header">
+                    <div class="float-left">
+                        <span class="sub-menu-header">店铺管理</span>
+                    </div>
+                </div>
+                <div class="page-main-content">
+                    <div class="row padding-top-20">
+                        <div class="col-xs-12">
+                            <div class="row" style="margin-left: 0;margin-right: 0;">
+                                <form id="validation-form" class="form-horizontal" novalidate="novalidate">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12  col-sm-1 no-padding-right margin-left-5">店铺名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="clearfix">
+                                                <input type="text" name="storeName" id="storeName" class="col-xs-12 col-sm-8 margin-left-5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-1 no-padding-right margin-left-5">行业类别:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="clearfix">
+                                                <!--<input type="text" name="storeLevel" id="storeLevel" class="col-xs-12 col-sm-8 margin-left-5">-->
+                                                <select class=" col-xs-12 col-sm-8 margin-left-5" name="storeType">
+                                                    <option value="cy">餐饮</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-1 no-padding-right margin-left-5">店铺简称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="clearfix">
+                                                <input type="text" name="storeNick" class="col-xs-12 col-sm-8 margin-left-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-1 no-padding-right margin-left-5">店铺电话:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="clearfix">
+                                                <input type="text" name="storePhone"  class="col-xs-12 col-sm-8 margin-left-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-1 no-padding-right margin-left-5">店铺地址:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="clearfix">
+                                                <input type="text" name="storeAddress"  class="col-xs-12 col-sm-8 margin-left-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix padding-bottom-20">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="submit" id="submit" class="btn btn-info">
+                                                <i class="ace-icon fa fa-check bigger-110"></i>保存</button>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <button type="reset" class="btn">
+                                            <i class="ace-icon fa fa-undo bigger-110"></i>取消</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">Ace</span>
+							Application &copy; 2013-2014
+						</span>
+
+                &nbsp; &nbsp;
+                <span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="../assets/js/jquery-2.1.4.min.js"></script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="../assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="../assets/js/jquery.dataTables.min.js"></script>
+<script src="../assets/js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="../assets/js/dataTables.buttons.min.js"></script>
+<script src="../assets/js/buttons.flash.min.js"></script>
+<script src="../assets/js/buttons.html5.min.js"></script>
+<script src="../assets/js/buttons.print.min.js"></script>
+<script src="../assets/js/buttons.colVis.min.js"></script>
+<script src="../assets/js/dataTables.select.min.js"></script>
+<script src="../assets/dist/js/common.js"></script>
+<!-- ace scripts -->
+<script src="../assets/js/ace-elements.min.js"></script>
+<script src="../assets/js/ace.min.js"></script>
+<script src="../assets/js/echarts.common.min.js"></script>
+<script src="../assets/js/jquery.validate.min.js"></script>
+<script src="../assets/dist/js/main.js"></script>
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+
+    // $("button[type='reset']").click(function () {
+    //
+    // });
+    jQuery(function($) {
+        jQuery.validator.addMethod("isTel", function(value, element) {
+            var length = value.length;
+            var phone = /(^(\d{3,4}-)?\d{6,8}$)|(^(\d{3,4}-)?\d{6,8}(-\d{1,5})?$)|(\d{11})/;
+            return this.optional(element) || (phone.test(value));
+        }, "请填写正确的固定电话");//可以自定义默认提示信息
+        var $form = $('#validation-form').validate({
+            errorElement: 'div',
+            errorClass: 'help-block',
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                storeName: {
+                    required: true,
+                    maxlength: 28
+                },
+                storeType: {
+                    required: true
+                },
+                storeNick: {
+                    required: true
+                },
+                storePhone: {
+                    required: true,
+                    isTel: true
+                },
+                storeAddress: {
+                    required: true,
+                    maxlength: 40
+                }
+            },
+            messages: {
+                storeName: {
+                    required: '此字段为必填',
+                    maxlength: '输入字符不能大于28'
+                },
+                storeNick: {
+                    required: '此字段为必填',
+                    maxlength: '输入字符不能大于28'
+                },
+                storeType: '此字段为必填',
+                storePhone: {
+                    required: '此字段为必填'
+                },
+                storeAddress: {
+                    required: '此字段为必填',
+                    maxlength: '输入字符不能大于40'
+                }
+            },
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            },
+
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error');
+                $(e).remove();
+            },
+
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent());
+            },
+
+            submitHandler: function (form) {
+
+                // var data = $(form).serializeObject();
+
+            },
+            invalidHandler: function (form) {
+
+            }
+        });
+
+
+    })
+
+</script>
+</body>
+</html>
