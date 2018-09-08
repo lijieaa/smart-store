@@ -260,3 +260,9 @@
     display: inline-block;
     text-align: right;
 }
+
+#search{
+    line-height: 38px;
+    text-align: center;
+    cursor: pointer;
+}
