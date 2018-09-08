@@ -228,7 +228,7 @@
 <script src="../assets/js/buttons.print.min.js"></script>
 <script src="../assets/js/buttons.colVis.min.js"></script>
 <script src="../assets/js/dataTables.select.min.js"></script>
-<script src="../assets/dist/js/common.js"></script>
+
 <!-- ace scripts -->
 <script src="../assets/js/ace-elements.min.js"></script>
 <script src="../assets/js/ace.min.js"></script>
@@ -403,7 +403,7 @@
                 buttons: {
                     confirm: {
                         label: '确定',
-                        className: 'btn-success'
+                        className: 'btn-success',
                     },
                     cancel: {
                         label: '取消',
@@ -411,8 +411,9 @@
                     }
                 },
                 callback: function (result) {
+                    // alert(0);
                 }
-            });
+            } );
         })
 
     })
