@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jpm.gen.dao.GenSchemeDao">
+	<sql id="Base_Column_List">
+    id,name,category,package_name,module_name,sub_module_name,function_name,function_name_simple,function_author,create_date,update_date,remarks
+  </sql>
+    
+    <select id="select" resultType="com.jpm.gen.entity.GenScheme">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM gen_scheme a
+		WHERE a.id = #{id}
+	</select>
+
+    <select id="test" parameterType="java.util.Map" resultType="com.jpm.gen.entity.GenScheme">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM gen_scheme a
+        <where>
+            a.id=#{id}
+        </where>
+        order by #{asc} desc
+    </select>
+
+
+	<select id="selectAll" resultType="com.jpm.gen.entity.GenScheme">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM gen_scheme a
+		<where>
+			<if test="functionName != null and functionName != ''">
+				AND a.name LIKE
+				<if test="_databaseId == 'oracle'">'%'||#{functionName}||'%'</if>
+				<if test="_databaseId == 'mssql'">'%'+#{functionName}+'%'</if>
+				<if test="_databaseId == 'mysql'">concat('%',#{functionName},'%')</if>
+			</if>
+		</where>
+		<if test="orderByClause!=null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO gen_scheme(
+			id, 
+			name, 
+			category, 
+			package_name, 
+			module_name, 
+			sub_module_name, 
+			function_name, 
+			function_name_simple, 
+			function_author, 
+			gen_table_id, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks
+		) VALUES (
+			#{id}, 
+			#{name}, 
+			#{category},  
+			#{packageName},  
+			#{moduleName},  
+			#{subModuleName},  
+			#{functionName},  
+			#{functionNameSimple},  
+			#{functionAuthor},  
+			#{genTable.id},  
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE gen_scheme SET 
+			name = #{name}, 
+			category = #{category},  
+			package_name = #{packageName},  
+			module_name = #{moduleName},  
+			sub_module_name = #{subModuleName},  
+			function_name = #{functionName},  
+			function_name_simple = #{functionNameSimple},  
+			function_author = #{functionAuthor},  
+			gen_table_id = #{genTable.id},  
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.util.ArrayList">
+		delete from gen_scheme
+		where id in
+		<foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+</mapper>

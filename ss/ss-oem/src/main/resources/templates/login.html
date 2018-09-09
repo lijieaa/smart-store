@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+    <link rel="stylesheet" th:href="@{assets/css/ace.min.css}" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" th:href="@{assets/css/fonts.googleapis.com.css}" />
+    <link rel="stylesheet" th:href="@{assets/font-awesome/4.5.0/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{assets/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{assets/font-awesome/4.5.0/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{assets/dist/css/login.css}">
+    <script th:src="@{assets/dist/js/vue.js}"></script>
+    <style>
+        .help-block{
+            color: #D16E6C;
+        }
+    </style>
+</head>
+<body>
+<div id="loginContain" v-cloak>
+    <div class="login-content">
+        <div class="header-login">
+            <span>智慧餐厅</span>
+            <span>后台管理</span>
+        </div>
+        <div class="content-page" >
+            <template v-if="loginOrForget">
+                <form action="login" class="form-horizontal" id="loginForm" v-show="popDisplay" method="post">
+                    <div class="input-contain">
+                        <i class="ace-icon fa fa-user back-blue font-style"></i>
+                        <input type="text" placeholder="用户名" name="username" key="username">
+                    </div>
+                    <div class="input-contain">
+                        <i class="ace-icon fa fa-lock back-blue font-style"></i>
+                        <input type="password" placeholder="密码" name="password" key="psd">
+                    </div>
+                    <!--<input type="submit" class="login" value="登录">-->
+                    <button type="submit" class="login">登录</button>
+                    <!--<a class="login" th:href="@{businessManage/businessManagement.html">登录</a>-->
+                    <!--<span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>-->
+                    <div class="forget-pwd">
+                        <span @click="registerCount">账户注册</span>
+                        <span @click="forgetPwd">忘记密码</span>
+                    </div>
+                </form>
+                <form action="" class="form-horizontal" id="loginRegister" v-show="!popDisplay">
+                    <div class="input-contain">
+                        <label>手机号：</label>
+                        <input type="text" placeholder="输入手机号" name="telPhone" key="telPhone">
+                    </div>
+                    <div class="input-contain">
+                        <label>密码：</label>
+                        <input type="password" placeholder="输入密码" id = "password" name="password" key="password">
+                    </div>
+                    <div class="input-contain">
+                        <label>确认：</label>
+                        <input type="password" placeholder="再次输入密码" name="submitPsd" key="submitPsd">
+                    </div>
+                    <div class="input-contain">
+                        <label>昵称：</label>
+                        <input type="text" name="nickName" key="nickName">
+                    </div>
+
+                    <div class="forget-pwd">
+                        <button type="submit" class="register-style">注册</button>
+                        <!--<input type="submit"  value="注册">-->
+                        <span class="register-style" @click="cancelHandle">取消</span>
+                    </div>
+                </form>
+            </template>
+            <template v-if="!loginOrForget">
+                <p class="margin-top-20">平台系统近期正在进行升级改造，若忘记密码，请电话联系平台相关人员。</p>
+                <p class="margin-top-20">联系电话：(028) 40008888</p>
+                <button class="login margin-bottom-20" @click="sureForm">确定</button>
+            </template>
+        </div>
+    </div>
+</div>
+<script th:src="@{assets/js/jquery-2.1.4.min.js}"></script>
+<script th:src="@{assets/js/jquery.validate.min.js}"></script>
+<script th:inline="javascript">
+    var v1 = new Vue({
+        el:'#loginContain',
+        data:{
+            popDisplay: true,
+            loginOrForget: true
+        },
+        methods:{
+            registerCount: function () {
+               this.popDisplay = false;
+               $('.help-block').remove();
+               $('.input-contain').removeClass('has-error');
+               $("input").val("")
+            },
+            cancelHandle: function () {
+                this.popDisplay = true;
+                $('.help-block').remove();
+                $("input").val("")
+            },
+            loginSubmit: function () {
+                window.location.href = "businessManage/businessManagement.html"
+            },
+            forgetPwd: function () {
+                this.loginOrForget = false
+            },
+            sureForm: function () {
+                this.loginOrForget = true
+            }
+        }
+    })
+    $(function () {
+
+        jQuery.validator.addMethod("isMobile", function(value, element) {
+            var length = value.length;
+            var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(19[0-9]{9})|(16[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+            return this.optional(element) || (length == 11 && mobile.test(value));
+        }, "请正确填写您的手机号码");
+
+        jQuery.validator.addMethod("surePwd", function(value, element) {
+            if(value === $("#password").val()){
+                return true
+            }
+        }, "与确认密码一致");
+       /* $('#loginForm').validate({
+            errorElement: 'div',
+            errorClass: 'help-block',
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                username: {
+                    required: true
+                },
+                psd: {
+                    required: true
+                }
+            },
+            messages: {
+                username:'此字段为必填',
+                psd:'此字段为必填'
+            },
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            },
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error');
+                $(e).remove();
+            },
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent());
+            },
+            submitHandler: function (form) {
+                v1.loginSubmit();
+            },
+            invalidHandler: function (form) {
+
+            }
+        });*/
+
+        $('#loginRegister').validate({
+            errorElement: 'div',
+            errorClass: 'help-block',
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                telPhone: {
+                    required: true,
+                    isMobile: true
+                },
+                password: {
+                    required: true,
+                    rangelength: [6, 20],
+                },
+                submitPsd: {
+                    required: true,
+                    surePwd: true
+                },
+                nickName: {
+                    required: true
+                }
+            },
+            messages: {
+                telPhone: {
+                    isMobile: '请输入正确的电话号码',
+                    required: '此字段为必填'
+                },
+                password: {
+                    required: '此字段为必填',
+                    rangelength: '6-20个字符'
+                },
+                submitPsd: {
+                    required: '此字段为必填',
+                    surePwd: '与密码不一致'
+                },
+                nickName:'此字段为必填'
+            },
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            },
+
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error');
+                $(e).remove();
+            },
+
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent());
+            },
+
+            submitHandler: function (form) {
+              v1.regiterSubmit();
+            },
+            invalidHandler: function (form) {
+
+            }
+        });
+    })
+
+</script>
+</body>
+</html>

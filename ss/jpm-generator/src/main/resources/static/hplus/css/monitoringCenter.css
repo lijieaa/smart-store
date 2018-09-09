@@ -1,0 +1,399 @@
+html{font-size:62.5%;}
+html,body{
+    background: white;
+}
+#wrapper{
+    width: 94%;
+    margin: 0 auto;
+    background: white;
+ }
+#content{
+    margin-top: 17px;
+}
+.main-content{
+    margin-top: 20px;
+}
+.header-page{
+    display: flex;
+    justify-content: space-between;
+}
+#content .title{
+    color: #2e4050;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 5px;
+}
+.header-page>div>span{
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 7px;
+    color: #9b9694;
+    font-size: 12px;
+}
+.margin-l-19{
+    margin-left: 19px;
+}
+.select-style{
+    background-color: #FFFFFF;
+    background-image: none;
+    color: inherit;
+    display: inline-block;
+    padding: 4px 12px;
+    -webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    /*width: 100%;*/
+    font-size: 14px;
+    width: 220px;
+    border:1px solid #666;
+    border-radius: 5px;
+}
+.main-content .button{
+    background: #2e4050;
+    padding: 6px 15px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.main-content>div{
+    line-height: 45px;
+    color: #4c4f52;
+    font-size: 16px;
+}
+.main-page{
+    display: flex;
+}
+.main-page>.row{
+    width: 100%;
+}
+.pv-content{
+    position: relative;
+    height: 265px;
+    /*background: #bdeeee;*/
+    width: 100%;
+    background: url(../img/moniter.png) no-repeat;
+    background-size: 100% 100%;
+}
+.pv-content>div:nth-of-type(1){
+    font-size: 120px;
+    color: #2e4050;
+    position: absolute;
+    right: 15px;
+    bottom: 106px;
+}
+.pv-content>div:nth-of-type(2){
+    font-size: 30px;
+    color: #2e4050;
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+}
+.temperature{
+    color: #23c6c8;
+    font-size: 60px;
+}
+.sv-content{
+    height: 265px;
+}
+.sv-content .detail-day{
+    background: #f28893;
+    height: 80px;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    line-height: 80px;
+}
+.sv-detail{
+    position: relative;
+    height: 170px;
+    /*background: #bdeeee;*/
+    width: 100%;
+    margin-top: 10px;
+    background: url(../img/moniter-sp.png) no-repeat;
+    background-size: 100% 100%;
+}
+.sv-detail>div:nth-of-type(1){
+    font-size: 80px;
+    color: #2e4050;
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+}
+.sv-detail .temperature{
+    font-size: 36px;
+    color: #f8ac59;
+}
+[v-cloak]{
+    display: none;
+}
+.mointer-content .btn-bj{
+    height: 128px;
+    border-radius: 5px;
+    text-align: center;
+}
+.mointer-content .btn-bj-two{
+    height: 100px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+}
+.color-gary{
+    background: #2e4050;
+}
+.color-green{
+    background: #1ab394;
+}
+.color-b1{
+    background: #23c6c8;
+}
+.color-b2{
+    background: #ed5565;
+}
+.color-b3{
+    background: #f8ac59;
+}
+.fa{
+    width: 32px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 66px;
+    color: white;
+    margin-top: 16px;
+}
+.fa-lightbulb-o:before {
+    content: "\f0eb";
+}
+.btn-bj>div{
+    font-size: 18px;
+    color: white;
+    margin-top: -5px;
+}
+.mg-t-10{
+    margin-top: 10px;
+}
+.mg-t-20{
+    margin-top: 20px;
+}
+.mg-t-45{
+    margin-top: 45px;
+}
+.pv-number,.sv-number{
+    background: #f3f3f5;
+    height: 360px;
+    text-align: center;
+    overflow: hidden;
+}
+.color-black{
+    color: #000;
+}
+.color-g{
+    color: #1ab394;
+    cursor: pointer;
+}
+.pop-style{
+    width: 180px;
+    height: 30px;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+.pop-form>div{
+    text-align: center;
+}
+.pop-form label,.pop-form .font{
+    font-size: 16px;
+    color: #000;
+}
+.pop-form .font{
+    color: #4c4f52;
+}
+.pop-form input{
+    text-indent: 6px;
+}
+.pop-form button,
+.pop-form span{
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 5px;
+    border: none;
+    cursor: pointer;
+}
+.sv-number table tr:nth-of-type(even){
+    background: #fff;
+}
+.sv-number table{
+    width: calc(100% - 22px);
+    border: 1px solid #c2c2c2;
+    /*height: 340px;*/
+    margin: 11px;
+}
+.sv-number table td{
+    border: 1px solid #c2c2c2;
+    height: 25px;
+}
+.sv-number table tr:nth-of-type(1) td{
+    height: 36px;
+}
+.back-white{
+    background: white;
+}
+
+
+/*监控中心样式*/
+.dis-flex{
+    display: flex;
+}
+.height-tem{
+    width: 100%;
+    height: 160px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+.device-style{
+    font-size: 36px;
+    color: #1ab394;
+}
+.gj-device{
+    font-size: 36px;
+    color: #ed5565;
+}
+.monitor-content{
+    /*justify-content: space-between;*/
+    align-items: center;
+    flex-wrap: wrap;
+}
+.text-in-6{
+    text-indent: 6px;
+}
+.main-device-contain{
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.main-device-contain .message-content{
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+}
+
+.device-width-style{
+    width: 49%;
+}
+
+/*故障模式*/
+.danger-contain2{
+    background: #faccd0;
+}
+.danger-contain2 .title{
+    font-size: 2.4rem;
+    color: #ed5565;
+    font-weight: bold;
+}
+.danger-contain2 .detail-num{
+    font-size: 2.2rem;
+    color: #e61f19;
+    font-weight: bold;
+}
+.danger-contain2 img{
+    width: 4%;
+    vertical-align: initial;
+}
+
+
+/*正常模式*/
+.danger-contain1{
+    background: #bdeeee;
+}
+.danger-contain1 .title{
+    font-size: 2.4rem;
+    color: #23c6c8;
+    font-weight: bold;
+}
+.danger-contain1 .detail-num{
+    font-size: 2.2rem;
+    color: #f8ac59;
+    font-weight: bold;
+}
+
+
+/*不在线模式*/
+.danger-contain0{
+    background: #bec3c7;
+}
+.danger-contain0 .title{
+    font-size: 2.4rem;
+    color: #293846;
+    font-weight: bold;
+}
+.danger-contain0 .detail-num{
+    font-size: 2.2rem;
+    color: #293846;
+    font-weight: bold;
+}
+.show-three .icon-monitor embed{
+    width: 80px;
+}
+
+/*@media screen and (max-width: 1410px) {*/
+    /*.show-one .title,*/
+    /*.show-two .title{*/
+        /*font-size: 2.2rem;*/
+    /*}*/
+    /*.show-one .detail-num,*/
+    /*.show-two .detail-num{*/
+        /*font-size: 2rem;*/
+    /*}*/
+    /*.show-three .title,*/
+    /*.show-three .detail-num{*/
+        /*font-size: 2rem;*/
+    /*}*/
+/*}*/
+
+.icon-monitor embed{
+    width: 107px;
+}
+
+.message-content .control-title{
+    font-size: 16px;
+    color: #293846;
+}
+/*.message-content .dis-flex,.message-content>div{*/
+    /*position: relative;*/
+    /*z-index: 2;*/
+/*}*/
+.message-content .set-num{
+    font-size: 22px;
+    color: #293846;
+    font-weight: bold;
+}
+.message-content .margin-rt-83{
+    margin-right: 83px;
+}
+.message-content .margin-rt-55{
+    margin-right: 55px;
+}
+.icon-monitor{
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+.icon-monitor>img{
+    /*width: 100%;*/
+}
+
+
+/*历史查询样式*/
+.font-style-title{
+    color: #4c4f52;
+    font-size: 16px;
+}
+.main-content .toast-error {
+    background-color: #ed5565;
+}
+.main-content .toast-info{
+    background-color: #23c6c8;
+}

@@ -1,0 +1,50 @@
+spring:
+ profiles:
+   active: gen,exception
+ datasource:
+  type: com.alibaba.druid.pool.DruidDataSource
+  #mysql配置
+  url: jdbc:mysql://47.104.219.45:3306/ss?characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull&&allowMultiQueries=true&autoReconnect=true
+  username: ss
+  password: ss123456
+  driverClassName: com.mysql.jdbc.Driver
+  #oracle配置
+  #url: jdbc:oracle:thin:@//192.168.10.14:1521/orcl
+  #username: c##_csg_pm
+  #password: visizen028
+  #driverClassName: oracle.jdbc.driver.OracleDriver
+  #SQL Server配置
+  #url: jdbc:jtds:sqlserver://192.168.40.19:1433/alarm
+  #username: sa
+  #password: alarm
+  #driverClassName: net.sourceforge.jtds.jdbc.Driver
+#dataSource Pool configuration
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  maxWait: 60000
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  validationQuery: SELECT 1 FROM DUAL
+  #validationQuery: SELECT 'x'
+  testWhileIdle: true
+  testOnBorrow: false
+  exceptionSorter: true
+  testOnReturn: false
+  poolPreparedStatements: true
+  #filters: stat,wall,log4j
+  filters: stat
+  maxPoolPreparedStatementPerConnectionSize: 20
+  connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  useGlobalDataSourceStat: true
+ thymeleaf:
+   cache: false
+   prefix: classpath:/templates/hplus/
+ messages:
+   basename: i18n/messages
+mybatis:
+ config-location: classpath:mybatis-config.xml
+ mapper-locations: classpath:/mapper/**/*.xml
+ type-aliases-package: com.jpm.*
+server:
+  port: 8081

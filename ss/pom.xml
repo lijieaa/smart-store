@@ -12,6 +12,11 @@
         <module>ss-service</module>
         <module>ss-plat</module>
         <module>ss-cus</module>
+        <module>jpm-common</module>
+        <module>jpm-generator</module>
+        <module>ss-service</module>
+        <module>ss-oem</module>
+        <module>ss-api</module>
     </modules>
 
     <properties>
@@ -30,7 +35,6 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>

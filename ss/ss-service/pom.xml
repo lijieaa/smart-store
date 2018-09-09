@@ -11,5 +11,11 @@
 
     <artifactId>ss-service</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.jpm</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

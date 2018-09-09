@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jpm.ss.user.dao.SysUserDao">
+
+    <sql id="Base_Column_List">
+                    a.id AS "id",
+                a.username AS "username",
+                a.phone AS "phone",
+                a.password AS "password",
+                a.create_by AS "createBy.id",
+                a.update_by AS "updateBy.id",
+                a.create_date AS "createDate",
+                a.update_date AS "updateDate",
+                a.nick_name AS "nickName",
+                a.address AS "address",
+                a.sex AS "sex",
+                a.email AS "email"
+    </sql>
+
+
+    <select id="select" resultType="com.jpm.ss.user.entity.SysUserEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user a
+        WHERE a.id = #{id}
+    </select>
+
+
+    <select id="selectAll" resultType="com.jpm.ss.user.entity.SysUserEntity">
+
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user a
+        <where>
+            <if test="username != null and username != ''">
+                AND a.username = #{username}
+            </if>
+            <if test="phone != null and phone != ''">
+                AND a.phone = #{phone}
+            </if>
+            <if test="password != null and password != ''">
+                AND a.password = #{password}
+            </if>
+            <if test="createBy != null and createBy.id != null and createBy.id != ''">
+                AND a.create_by = #{createBy.id}
+            </if>
+            <if test="updateBy != null and updateBy.id != null and updateBy.id != ''">
+                AND a.update_by = #{updateBy.id}
+            </if>
+            <if test="createDate != null and createDate != ''">
+                AND a.create_date = #{createDate}
+            </if>
+            <if test="updateDate != null and updateDate != ''">
+                AND a.update_date = #{updateDate}
+            </if>
+            <if test="nickName != null and nickName != ''">
+                AND a.nick_name = #{nickName}
+            </if>
+            <if test="address != null and address != ''">
+                AND a.address = #{address}
+            </if>
+            <if test="sex != null and sex != ''">
+                AND a.sex = #{sex}
+            </if>
+            <if test="email != null and email != ''">
+                AND a.email = #{email}
+            </if>
+        </where>
+        <if test="orderByClause!=null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+
+    <insert id="insert">
+
+        INSERT INTO sys_user(
+                        id,
+                    username,
+                    phone,
+                    password,
+                    create_by,
+                    update_by,
+                    create_date,
+                    update_date,
+                    nick_name,
+                    address,
+                    sex,
+                    email
+        ) VALUES (
+    
+                    #{id},
+
+                    #{username},
+
+                    #{phone},
+
+                    #{password},
+
+                    #{createBy.id},
+
+                    #{updateBy.id},
+
+                    #{createDate},
+
+                    #{updateDate},
+
+                    #{nickName},
+
+                    #{address},
+
+                    #{sex},
+
+                    #{email}
+        )
+
+    </insert>
+
+    <update id="update">
+
+        UPDATE sys_user SET
+                            username = #{username},
+                        phone = #{phone},
+                        password = #{password},
+                        update_by = #{updateBy.id},
+                        update_date = #{updateDate},
+                        nick_name = #{nickName},
+                        address = #{address},
+                        sex = #{sex},
+                        email = #{email}
+        WHERE id = #{id}
+
+    </update>
+
+
+    <delete id="delete" parameterType="java.util.ArrayList">
+
+        delete from sys_user
+        where id in
+        <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+
+    </delete>
+
+    <select id="selectUsername" resultType="com.jpm.ss.user.entity.SysUserEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user a
+        WHERE a.username = #{username}
+        <if test="id!=null or id!= ''">
+            and a.id!=#{id}
+        </if>
+    </select>
+
+    <select id="selectPhone" resultType="com.jpm.ss.user.entity.SysUserEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user a
+        WHERE a.phone = #{phone}
+        <if test="id!=null or id!= ''">
+            and a.id!=#{id}
+        </if>
+    </select>
+
+    <!--登录时使用-->
+    <select id="selectTel" resultType="com.jpm.ss.user.entity.SysUserEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user a
+        WHERE a.phone = #{0}
+    </select>
+
+</mapper>

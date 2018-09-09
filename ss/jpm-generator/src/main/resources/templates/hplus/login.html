@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" th:href="@{/hplus/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/hplus/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}"/>
+    <link rel="stylesheet" th:href="@{/hplus/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/hplus/css/login.css}"/>
+
+
+    <style>
+        /*body,html{*/
+            /*width: 100%;*/
+            /*height: 100%;*/
+            /*position: relative;*/
+            /*background:#e3e7ec;*/
+            /*/!*background: url('../../static/img/loginBj.png');*!/*/
+        /*}*/
+        /*.loginContent{*/
+            /*width: 380px;*/
+            /*height: 300px;*/
+            /*margin: auto;*/
+            /*position: absolute;*/
+            /*top: 0; left: 0; bottom: 0; right: 0;*/
+        /*}*/
+        /*.header{*/
+            /*height: 60px;*/
+            /*line-height: 40px;*/
+            /*font-size: 24px;*/
+            /*text-align: center;*/
+            /*color: #666;*/
+        /*}*/
+        /*.content{*/
+            /*height: 300px;*/
+            /*background: #ffffff;*/
+            /*border-radius: 5px;*/
+            /*box-shadow: 0 2px 6px #999;*/
+            /*padding: 28px;*/
+        /*}*/
+        /*.login-form{*/
+        /*}*/
+        /*.form-group{*/
+            /*margin: 15px 0;*/
+        /*}*/
+    </style>
+</head>
+<body>
+  <div class="loginContent">
+    <div class="content">
+        <div class="header">
+            <img th:src="@{/hplus/img/logo.png}" alt=""/>
+        </div>
+        <div th:if="${param.error}">
+            用户名或者密码错误!
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <form id="login-form" class="login-form" th:action="@{/login}" method="post">
+            <div class="form-group has-feedback mgr-t-50">
+                <!--<span class="glyphicon glyphicon-user form-control-feedback" title="登录账号" style="color: rgb(171, 195, 213);"></span>-->
+                <label for="">用户名</label>
+                <input type="text" id="username" name="username"  class="form-control required" placeholder="请输入用户名"
+                       autocomplete="off" data-msg-required="请填写登录账号." aria-required="true" aria-invalid="false">
+            </div>
+            <div class="form-group has-feedback">
+                <label for="">密&nbsp;&nbsp;&nbsp;码</label>
+                <!--<span class="glyphicon glyphicon-lock form-control-feedback" title="登录密码，鼠标按下显示密码" onmousedown="$('#password').attr('type','text')" onmouseup="$('#password').attr('type','password')" style="color: rgb(171, 195, 213);"></span>-->
+                <input type="password" id="password" name="password"  class="form-control required" placeholder="请输入密码"
+                       data-msg-required="请填写登录密码." autocomplete="off" aria-required="true" aria-invalid="false">
+            </div>
+            <div class="row mg-t-26">
+                <div class="col-xs-12">
+                    <div class="dropdown pull-right mag-r-28">
+                        <a href="javascript:" style="color: white" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">
+                            <i class="fa icon-globe" ></i><span id="language">中文</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="mt5"></li>
+                            <li><a href="javascript:void(0)" dataId="zh_CN">中文</a></li>
+                            <li><a href="javascript:void(0)" dataId="en_US">英语</a></li>
+                            <li class="mt10"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mgr-t-50">
+                <button type="submit" class="" id="btnSubmit" data-loading="登录验证成功，正在进入..."
+                        data-login-valid="正在验证登录，请稍后..." @keyup="formSubmit">登录</button>
+            </div>
+        </form>
+
+    </div>
+  </div>
+</body>
+<script th:src="@{/hplus/js/jquery.min.js}"></script>
+<script th:src="@{/hplus/js/vue.js}"></script>
+<script th:src="@{/hplus/js/globe.js}"></script>
+<script>
+    var contextRoot = "/";
+    // $("#login-form").submit();
+    //点击选择语言
+    $(document).on("click",".dropdown-toggle",function () {
+        if($(".dropdown-menu").css('display')==='none'){
+             $(".dropdown-menu").show();
+        }else{
+             $(".dropdown-menu").hide();
+        }
+
+    });
+    //选择语言改变
+    $(document).on("click",".dropdown-menu a",function () {
+        var changeText=$(this).text();
+        $("#language").text(changeText);
+        $(".dropdown-menu").hide();
+        $.ajax({
+            url: "/change_lang",
+            type:"get",
+            data: {
+                lang: $(this).attr('dataId')
+            },
+            success: function(data){
+            }
+        })
+    })
+    new Vue({
+        el: '.loginContent',
+        data: {
+            languageChange: true
+        },
+        methods: {
+            formSubmit: function () {
+                $('#login-form').submit();
+            }
+        }
+    })
+
+
+
+</script>
+</html>

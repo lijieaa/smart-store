@@ -1,0 +1,123 @@
+html,body{
+    /*width: 100%;*/
+    height: 100%;
+}
+#loginContain{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('../images/login_bj.png') no-repeat;
+}
+
+.login-content{
+    position: absolute;
+    width: 425px;
+    margin: 0 auto;
+    right: 9%;
+    /*height: 400px;*/
+    top: 44%;
+    margin-top: -160px;
+    border-radius: 5px;
+    background: white;
+}
+.header-login{
+    text-align: center;
+    margin-top: 28px;
+}
+.header-login>span:nth-of-type(1){
+    font-size: 33px;
+    color: #0077b4;
+    font-weight: 600;
+    font-family: "黑体";
+    vertical-align: bottom;
+}
+.header-login>span:nth-of-type(2){
+    display: inline-block;
+    width: 95px;
+    height: 30px;
+    font-size: 19px;
+    color: white;
+    background: #0077b4;
+}
+.login-content .content-page{
+
+}
+#loginForm .input-contain{
+    width: 320px;
+    height: 45px;
+    border: 1px solid #575757;
+    box-sizing: border-box;
+    margin: 30px auto 0 auto;
+}
+#loginForm .input-contain>input{
+    width: 288px;
+    height: 43px;
+    border: none;
+}
+#loginRegister .input-contain{
+    width: 326px;
+    height: 45px;
+    /*border: 1px solid #575757;*/
+    box-sizing: border-box;
+    text-align: right;
+    margin: 19px -24px;
+}
+#loginRegister .input-contain input{
+    width: 238px;
+    height: 45px;
+    border: 1px solid #575757;
+    box-sizing: border-box;
+}
+.back-blue{
+    color: #0077b4;
+}
+.font-style{
+    font-size: 22px;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+#loginForm .input-contain:nth-of-type(2)>i{
+    /*padding-right: 0px;*/
+    padding-left: 9px;
+}
+#loginForm .input-contain:nth-of-type(2)>input{
+    width: 285px;
+}
+.content-page{
+    width: 320px;
+    margin: 0 auto;
+}
+.content-page .login{
+    display: block;
+    width: 320px;
+    height: 45px;
+    line-height: 45px;
+    background: #0077b4;
+    margin: 20px auto 0 auto;
+    text-align: center;
+    color: white;
+    border: none;
+
+}
+.content-page .forget-pwd{
+    display: flex;
+    width: 320px;
+    margin: 30px auto;
+    justify-content: space-between;
+}
+.register-style{
+    padding: 14px 40px;
+    background: #0077b4;
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+[v-cloak] {
+    /*display: none;*/
+}
+.margin-bottom-20{
+    margin-bottom: 20px!important;
+}
+.margin-top-20{
+    margin-top: 20px;
+}
