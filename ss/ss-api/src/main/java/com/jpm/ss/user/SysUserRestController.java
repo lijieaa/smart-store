@@ -1,6 +1,8 @@
 package com.jpm.ss.user;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.jpm.common.entity.DataTablesResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,6 +66,18 @@ public class SysUserRestController {
         PageInfo pageInfo = sysUserService.findJgGridPage(data);
         JqGridEntity<SysUserEntity> gridEntity = new JqGridEntity<SysUserEntity>(pageInfo.getPageNum(), pageInfo.getPages(), pageInfo.getTotal(), pageInfo.getList());
         return gridEntity;
+    }
+
+
+
+    @PreAuthorize("hasAuthority('sys_user:view')")
+    @RequestMapping(method = RequestMethod.GET, value = "datatables")
+    public DataTablesResponseEntity<SysUserEntity> datatables(@RequestParam Map data) {
+        PageInfo pageInfo = sysUserService.findDataTablesPage(data);
+        String draw = (String) data.get("draw");
+        int drawNum = Integer.parseInt(draw);
+        DataTablesResponseEntity<SysUserEntity> responseEntity = new DataTablesResponseEntity(drawNum, pageInfo.getTotal(), pageInfo.getTotal(), pageInfo.getList());
+        return responseEntity;
     }
 
     @ApiOperation("查询所有用户")

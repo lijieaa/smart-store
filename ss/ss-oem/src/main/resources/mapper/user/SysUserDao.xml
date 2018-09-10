@@ -19,57 +19,46 @@
 
 
     <select id="select" resultType="com.jpm.ss.user.entity.SysUserEntity">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM sys_user a
-        WHERE a.id = #{id}
+            SELECT
+            <include refid="Base_Column_List" />
+            FROM sys_user a
+            WHERE a.id = #{id}
     </select>
 
 
     <select id="selectAll" resultType="com.jpm.ss.user.entity.SysUserEntity">
 
         SELECT
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List" />
         FROM sys_user a
         <where>
-            <if test="username != null and username != ''">
-                AND a.username = #{username}
-            </if>
-            <if test="phone != null and phone != ''">
-                AND a.phone = #{phone}
-            </if>
-            <if test="password != null and password != ''">
-                AND a.password = #{password}
-            </if>
-            <if test="createBy != null and createBy.id != null and createBy.id != ''">
-                AND a.create_by = #{createBy.id}
-            </if>
-            <if test="updateBy != null and updateBy.id != null and updateBy.id != ''">
-                AND a.update_by = #{updateBy.id}
-            </if>
-            <if test="createDate != null and createDate != ''">
-                AND a.create_date = #{createDate}
-            </if>
-            <if test="updateDate != null and updateDate != ''">
-                AND a.update_date = #{updateDate}
-            </if>
-            <if test="nickName != null and nickName != ''">
-                AND a.nick_name = #{nickName}
-            </if>
-            <if test="address != null and address != ''">
-                AND a.address = #{address}
-            </if>
-            <if test="sex != null and sex != ''">
-                AND a.sex = #{sex}
-            </if>
-            <if test="email != null and email != ''">
-                AND a.email = #{email}
-            </if>
+			<if test="username != null and username != ''">
+				AND a.username LIKE
+					<if test="_databaseId == 'oracle'">'%'||#{username}||'%'</if>
+					<if test="_databaseId == 'mssql'">'%'+#{username}+'%'</if>
+					<if test="_databaseId == 'mysql'">concat('%',#{username},'%')</if>
+			</if>
+			<if test="phone != null and phone != ''">
+				AND a.phone = #{phone}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				AND a.nick_name = #{nickName}
+			</if>
+			<if test="address != null and address != ''">
+				AND a.address = #{address}
+			</if>
+			<if test="sex != null and sex != ''">
+				AND a.sex = #{sex}
+			</if>
+			<if test="email != null and email != ''">
+				AND a.email = #{email}
+			</if>
         </where>
         <if test="orderByClause!=null">
             order by ${orderByClause}
         </if>
     </select>
+
 
 
     <insert id="insert">
@@ -138,37 +127,29 @@
         delete from sys_user
         where id in
         <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
-            #{item}
+        #{item}
         </foreach>
 
     </delete>
 
-    <select id="selectUsername" resultType="com.jpm.ss.user.entity.SysUserEntity">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM sys_user a
-        WHERE a.username = #{username}
-        <if test="id!=null or id!= ''">
-            and a.id!=#{id}
-        </if>
-    </select>
+        <select id="selectUsername" resultType="com.jpm.ss.user.entity.SysUserEntity">
+                    SELECT
+                    <include refid="Base_Column_List" />
+                    FROM sys_user a
+                    WHERE a.username = #{username}
+            <if test="id!=null or id!= ''">
+                and a.id!=#{id}
+            </if>
+        </select>
+        <select id="selectPhone" resultType="com.jpm.ss.user.entity.SysUserEntity">
+                    SELECT
+                    <include refid="Base_Column_List" />
+                    FROM sys_user a
+                    WHERE a.phone = #{phone}
+            <if test="id!=null or id!= ''">
+                and a.id!=#{id}
+            </if>
+        </select>
 
-    <select id="selectPhone" resultType="com.jpm.ss.user.entity.SysUserEntity">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM sys_user a
-        WHERE a.phone = #{phone}
-        <if test="id!=null or id!= ''">
-            and a.id!=#{id}
-        </if>
-    </select>
-
-    <!--登录时使用-->
-    <select id="selectTel" resultType="com.jpm.ss.user.entity.SysUserEntity">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM sys_user a
-        WHERE a.phone = #{0}
-    </select>
 
 </mapper>

@@ -123,6 +123,32 @@ public abstract class CrudService<D extends CrudDao<T ,PK>, T extends DataEntity
         return pageInfo;
     }
 
+
+    /**
+     * datatables分页查询
+     * @param data
+     * @return
+     */
+    public PageInfo findDataTablesPage(Map data){
+        //分页
+        String page = (String) data.get("pageNum");
+        String rows = (String) data.get("pageSize");
+        int pageNum = Integer.parseInt(page);
+        int pageSize = Integer.parseInt(rows);
+        //排序
+        String od = (String) data.get("od");
+        if(null!=od&&!od.equals("")){
+            logger.info(od);
+            String orderByClause = StringUtils.toUnderScoreCase(od);
+            logger.info(orderByClause);
+            data.put("orderByClause",orderByClause);
+        }
+        PageHelper.startPage(pageNum, pageSize);
+        List<T> list = dao.selectAll(data);
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
+    }
+
     /**
      * 查询所有
      * @param data 实体用于条件筛选

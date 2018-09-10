@@ -1,104 +1,105 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<!DOCTYPE html>
-<head th:include="include :: header"></head>
-<link th:href="@{/hplus/css/plugins/datapicker/datepicker3.css}" rel="stylesheet">
-<link th:href="@{/hplus/css/plugins/chosen/chosen.css}" rel="stylesheet">
-<link th:href="@{/hplus/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css}" rel="stylesheet">
-<style>
-    .form-group{
-        padding: 7px 0;
-    }
-    .chosen-container{
-        width: 100%!important;
-    }
-    .chosen-container-single .chosen-single{
-        background: none!important;
-        border-radius: 1px;
-        border: 1px solid #CBD5DD;
-        line-height: 30px;
-    }
-</style>
-
-<body class="gray-bg">
-<div class="wrapper wrapper-content animated fadeInRight" style="padding-top: 0;">
-    <div class="row" style="background: #fff;">
-        <div class="col-sm-12">
-            <div class="ibox float-e-margins">
-                <div class="display-flex">
-                    <span class="title">{{userTitle}}</span>
-                    <a th:href="@{list}" class="return">返回</a>
-                </div>
-            </div>
-        </div>
-        <form id="form" action="#">
-            <div class="col-sm-6" style="margin-top: 20px;">
-            <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>账号</label>
-                        <input v-model="rslt.username" name="username" id="username" type="text" class="form-control">
-                    </div>
-                </div>
-
-            <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>电话</label>
-                        <input v-model="rslt.phone" name="phone" id="phone" type="text" class="form-control">
-                    </div>
-                </div>
-
-            <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>密码</label>
-                        <input v-model="rslt.password" name="password" id="password" type="text" class="form-control">
-                    </div>
-                </div>
-
-            <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>姓名</label>
-                        <input v-model="rslt.nickName" name="nickName" id="nickName" type="text" class="form-control">
-                    </div>
-                </div>
-
-            <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>地址</label>
-                        <input v-model="rslt.address" name="address" id="address" type="text" class="form-control">
-                    </div>
-                </div>
-
-            <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>性别，0-男，1-女</label>
-                        <input v-model="rslt.sex" name="sex" id="sex" type="text" class="form-control">
-                    </div>
-                </div>
-
-            <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>邮箱</label>
-                        <input v-model="rslt.email" name="email" id="email" type="text" class="form-control">
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-sm-offset-5 col-sm-12" style="padding-bottom: 20px;">
-                <button class="btn btn-sm btn-primary btnSave"><i class="fa fa-check"></i>保存</button>
-                <button class="btn btn-sm btn-default" type="reset"><i class="fa fa-reply-all"></i>重置</button>
-            </div>
-        </form>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<body layout:fragment="content">
+<div class="page-header" class="editCom">
+    <div class="float-left">
+        <span class="header-list"></span><span class="header-font-style">{{userTitle}}</span>
     </div>
+    <div class="float-right">
+        <a href="@{list}" class="add-style color-white"></i>返回</a>
+    </div>
+</div><!-- /.page-header -->
+<div class="row" class="editCom">
+    <div class="col-xs-12">
+        <div class="row">
+            <form class="form-horizontal" id="validation-form">
+
+                                    <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" >账号:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="username" id="username" v-model="rslt.username"
+                                           class="col-xs-12 col-sm-8" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" >电话:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="phone" id="phone" v-model="rslt.phone"
+                                           class="col-xs-12 col-sm-8" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" >密码:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="password" id="password" v-model="rslt.password"
+                                           class="col-xs-12 col-sm-8" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" >姓名:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="nickName" id="nickName" v-model="rslt.nickName"
+                                           class="col-xs-12 col-sm-8" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" >地址:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="address" id="address" v-model="rslt.address"
+                                           class="col-xs-12 col-sm-8" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" >性别，0-男，1-女:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="sex" id="sex" v-model="rslt.sex"
+                                           class="col-xs-12 col-sm-8" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" >邮箱:</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="clearfix">
+                                    <input type="text" name="email" id="email" v-model="rslt.email"
+                                           class="col-xs-12 col-sm-8" >
+                                </div>
+                            </div>
+                        </div>
+                <div class="space-4"></div>
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" type="submit" id="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            提交
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            重置
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- PAGE CONTENT ENDS -->
+    </div>
+    <!-- /.col -->
 </div>
-
-<div th:include="include :: footer"></div>
-<script th:src="@{/hplus/js/plugins/chosen/chosen.jquery.js}"></script>
-
-<script th:src="@{/hplus/js/plugins/datapicker/bootstrap-datepicker.js}"></script>
-<script th:src="@{/hplus/js/plugins/validate/jquery.validate.min.js}"></script>
-<script th:src="@{/hplus/js/plugins/validate/messages_zh.min.js}"></script>
-<script th:src="@{/hplus/js/Jpm-validator.js}" ></script>
-
 <script th:inline="javascript">
     var id=[[${#request.getParameter('id')}]];
     //validate验证
@@ -109,65 +110,65 @@
             data: {
                 userTitle: '',
                 rslt:{
-                        username:"",
-                        phone:"",
-                        password:"",
-                        nickName:"",
-                        address:"",
-                        sex:"",
-                        email:"",
-                },
-            },
-            mounted:function () {
-                let _this = this;
-                if(id){
-                    _this.userTitle = '编辑用户';
-                    $.ajax({
-                        url: ctx + "api/user/sys_user/"+id,
-                        method: "get",
-                        contentType: "application/json",
-                        dataType: "json",
-                        success: function (data) {
-                            if(data.errcode==0){
-                                _this.rslt=data.rslt;
-                            }else{
-                                alert("加载数据出错！");
-                            }
-                        },
-                        error: function () {
-                            console.log("error");
+                           username:"",
+                           phone:"",
+                           password:"",
+                           nickName:"",
+                           address:"",
+                           sex:"",
+                           email:"",
+    },
+    },
+        mounted:function () {
+            let _this = this;
+            if(id){
+                _this.userTitle = '编辑用户';
+                $.ajax({
+                    url: ctx + "api/user/sys_user/"+id,
+                    method: "get",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
+                        if(data.errcode==0){
+                            _this.rslt=data.rslt;
+                        }else{
+                            alert("加载数据出错！");
                         }
-                    })
-                }
-                else {
-                    _this.userTitle = '新增用户';
-                }
+                    },
+                    error: function () {
+                        console.log("error");
+                    }
+                })
+            }
+            else {
+                _this.userTitle = '新增用户';
+            }
 
-                $("#form").validate({
-                    rules:{
+            $("#form").validate({
+                rules:{
         username:{
             required:true,
                     maxlength:20,
             remote: function() {
-            var username = vue.$data.rslt.username;
-            var remote = {
-                url: ctx+"api/user/sys_user/username",
-                data: "username="+username+"&id="+(id?id:'')
-            };
-            return remote;
-        },
+                var username = vue.$data.rslt.username;
+                var remote = {
+                    url: ctx+"api/user/sys_user/username",
+                    data: "username="+username+"&id="+(id?id:'')
+                };
+                return remote;
+            },
     },
         phone:{
             required:true,
                     maxlength:11,
             remote: function() {
-            var phone = vue.$data.rslt.phone;
-            var remote = {
-                url: ctx+"api/user/sys_user/phone",
-                data: "phone="+phone+"&id="+(id?id:'')
-            };
-            return remote;
-        },
+                var phone = vue.$data.rslt.phone;
+                var remote = {
+                    url: ctx+"api/user/sys_user/phone",
+                    data: "phone="+phone+"&id="+(id?id:'')
+                };
+                return remote;
+            },
     },
         password:{
             required:true,
@@ -189,116 +190,64 @@
             required:true,
                     maxlength:50,
     },
-            },
-                //是否在获取焦点时验证
-                //onfocusout:false,
-                //是否在敲击键盘时验证
-                //onkeyup:false,
-                //提交表单后，（第一个）未通过验证的表单获得焦点
-                focusInvalid:true,
-                        //当未通过验证的元素获得焦点时，移除错误提示
-                        focusCleanup:true,
+        },
+            //是否在获取焦点时验证
+            //onfocusout:false,
+            //是否在敲击键盘时验证
+            //onkeyup:false,
+            //提交表单后，（第一个）未通过验证的表单获得焦点
+            focusInvalid:true,
+                    //当未通过验证的元素获得焦点时，移除错误提示
+                    focusCleanup:true,
 
-                        submitHandler: function (form) {
+                    submitHandler: function (form) {
 
-                    if(id){
-                        var data = $(form).serializeObject();
-                        data.id=id;
-                        $.ajax({
-                            url: ctx + "api/user/sys_user/",
-                            method: "put",
-                            contentType: "application/json",
-                            data: JSON.stringify(data),
-                            dataType: "json",
-                            success: function (data) {
-                                location.href="list";
-                            },
-                            error: function () {
-                                console.log("error");
-                            }
-                        })
-                    }else{
-                        var data = $(form).serializeObject();
-                        $.ajax({
-                            url: ctx + "api/user/sys_user/",
-                            method: "post",
-                            contentType: "application/json",
-                            data: JSON.stringify(data),
-                            dataType: "json",
-                            success: function (data) {
-                                location.href="list";
-                            },
-                            error: function () {
-                                console.log("error");
-                            }
-                        })
-                    }
-
-
-                },
-                invalidHandler: function (form) {
-
+                if(id){
+                    var data = $(form).serializeObject();
+                    data.id=id;
+                    $.ajax({
+                        url: ctx + "api/user/sys_user/",
+                        method: "put",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        dataType: "json",
+                        success: function (data) {
+                            location.href="list";
+                        },
+                        error: function () {
+                            console.log("error");
+                        }
+                    })
+                }else{
+                    var data = $(form).serializeObject();
+                    $.ajax({
+                        url: ctx + "api/user/sys_user/",
+                        method: "post",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        dataType: "json",
+                        success: function (data) {
+                            location.href="list";
+                        },
+                        error: function () {
+                            console.log("error");
+                        }
+                    })
                 }
 
-            });
 
+            },
+            invalidHandler: function (form) {
 
             }
-        })
 
-
-
-
-
-        //datepicker调用
-        $(".selectDate").datepicker({
-            autoclose: true, //自动关闭
-            //beforeShowDay: $.noop,    //在显示日期之前调用的函数
-            calendarWeeks: false,     //是否显示今年是第几周
-            clearBtn: false,          //显示清除按钮
-            daysOfWeekDisabled: [],   //星期几不可选
-            endDate: Infinity,        //日历结束日期
-            forceParse: true,         //是否强制转换不符合格式的字符串
-            format: 'yyyy-mm-dd',     //日期格式
-            keyboardNavigation: true, //是否显示箭头导航
-            language: 'cn',           //语言
-            minViewMode: 0,
-            orientation: "auto",      //方向
-            rtl: false,
-            startDate: -Infinity,     //日历开始日期
-            startView: 0,             //开始显示
-            todayBtn: false,          //今天按钮
-            todayHighlight: true,    //今天高亮
-            weekStart: 0
         });
-        //下拉框复选框初始化
-        var config = {
-            '.chosen-select': {},
-            '.chosen-select-deselect': {
-                allow_single_deselect: true
-            },
-            '.chosen-select-no-single': {
-                disable_search_threshold: 10
-            },
-            '.chosen-select-no-results': {
-                no_results_text: 'Oops, nothing found!'
-            },
-            '.chosen-select-width': {
-                width: "95%"
-            }
-        };
 
-        $('.chosen-select').chosen();
+
+        }
+    })
+
     });
 </script>
-
-
-
-
-
 </body>
-
 </html>
-
-
-

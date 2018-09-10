@@ -42,14 +42,11 @@
                     <table id="dynamicTable" class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th>店铺名称</th>
-                            <th>店铺级别</th>
-                            <th>行业类别</th>
-                            <th>店铺状态</th>
-                            <th>套餐类型</th>
-                            <th>套餐期限</th>
-                            <th>负责人</th>
-                            <th>联系电话</th>
+                            <#list table.cols as c>
+                                <#if c.isList?? && c.isList == "1">
+                                        <th>${c.comments}</th>
+                                </#if>
+                            </#list>
                             <th>操作功能</th>
                         </tr>
                         </thead>

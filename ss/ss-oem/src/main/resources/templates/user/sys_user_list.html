@@ -1,284 +1,248 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<!DOCTYPE html>
-<head th:include="include :: header"></head>
-<style>
-    .float-e-margins .btn{
-        margin-bottom: 0;
-    }
-    .ibox-tools{
-        margin-top: -2px;
-    }
-    .ibox-tools a{
-        color: #ffffff;
-    }
-    .ibox-title{
-        padding: 8px 15px 7px;
-    }
-    h5{
-        line-height: 32px;
-    }
-</style>
-<body class="gray-bg">
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>用户管理</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link ">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                    </div>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<body layout:fragment="content">
+<div class="page-header">
+    <div class="float-left">
+        <span class="header-list"></span><span class="header-font-style">用户管理</span>
+    </div>
+    <div class="float-right">
+        <a th:href="@{add_form}" class="add-style color-white">
+            <i class="ace-icon glyphicon glyphicon-plus"></i>
+            新增</a>
+    </div>
+</div><!-- /.page-header -->
+<form action="" id="searchForm">
+    <div class="search-list">
+                <div class="float-left">
+                    <label for="username" >账号：</label>
+                    <input type="text" id="username" name="username">
                 </div>
-                <div class="ibox-content">
-                    <div class="row">
-                        <form role="form" class="form-inline" id="search-form">
-                                <div class="form-group">
-                                    <label for="username" class="sr-only">账号</label>
-                                    <input type="text" placeholder="账号" id="username" name="username"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone" class="sr-only">电话</label>
-                                    <input type="text" placeholder="电话" id="phone" name="phone"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="sr-only">密码</label>
-                                    <input type="text" placeholder="密码" id="password" name="password"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="createBy" class="sr-only">创建人</label>
-                                    <input type="text" placeholder="创建人" id="createBy" name="createBy"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="updateBy" class="sr-only">最后修改人</label>
-                                    <input type="text" placeholder="最后修改人" id="updateBy" name="updateBy"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="createDate" class="sr-only">创建时间</label>
-                                    <input type="text" placeholder="创建时间" id="createDate" name="createDate"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="updateDate" class="sr-only">最后更新时间</label>
-                                    <input type="text" placeholder="最后更新时间" id="updateDate" name="updateDate"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="nickName" class="sr-only">姓名</label>
-                                    <input type="text" placeholder="姓名" id="nickName" name="nickName"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="address" class="sr-only">地址</label>
-                                    <input type="text" placeholder="地址" id="address" name="address"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="sex" class="sr-only">性别，0-男，1-女</label>
-                                    <input type="text" placeholder="性别，0-男，1-女" id="sex" name="sex"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="sr-only">邮箱</label>
-                                    <input type="text" placeholder="邮箱" id="email" name="email"
-                                           class="form-control">
-                                </div>
-                            <button class="btn btn-w-m btn-success" type="button" id="search">查询</button>
-                            <button class="btn btn-w-m btn-success" type="button" id="reset">重置</button>
-                        </form>
-                    </div>
+                <div class="float-left">
+                    <label for="phone" >电话：</label>
+                    <input type="text" id="phone" name="phone">
                 </div>
-            </div>
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <div class="ibox-tools">
-                        <a th:href="@{add_form}" class="btn btn-w-m btn-success">新增</a>
-                    </div>
+                <div class="float-left">
+                    <label for="nickName" >姓名：</label>
+                    <input type="text" id="nickName" name="nickName">
                 </div>
-                <div class="ibox-content">
-                    <div class="row">
-                        <div class="jqGrid_wrapper">
-                            <table id="table"></table>
-                            <div id="pager"></div>
-                        </div>
-                    </div>
+                <div class="float-left">
+                    <label for="address" >地址：</label>
+                    <input type="text" id="address" name="address">
+                </div>
+                <div class="float-left">
+                    <label for="sex" >性别，0-男，1-女：</label>
+                    <input type="text" id="sex" name="sex">
+                </div>
+                <div class="float-left">
+                    <label for="email" >邮箱：</label>
+                    <input type="text" id="email" name="email">
+                </div>
+        <span class="search float-left" id="search">
+                            <i class="ace-icon glyphicon glyphicon-search margin-right-10"></i>搜索
+                        </span>
+
+    </div>
+</form>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+
+
+        <div class="hr hr-18 dotted hr-double"></div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div>
+                    <table id="dynamicTable" class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                                        <th>账号</th>
+                                        <th>电话</th>
+                                        <th>姓名</th>
+                                        <th>地址</th>
+                                        <th>性别，0-男，1-女</th>
+                                        <th>邮箱</th>
+                            <th>操作功能</th>
+                        </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div th:include="include :: footer"></div>
 
 
-<script th:inline="javascript">
-    $.jgrid.defaults.styleUI = 'Bootstrap';
-    $("#table").jqGrid({
-        url: ctx + "api/user/sys_user/jggrid",
-        datatype: "json",
-        jsonReader: {
-            root: "rslt.rows",
-            page: "rslt.page",//当前页
-            total: "rslt.total",//总页数
-            records: "rslt.records" //总记录数
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+<script type="text/javascript" th:inline="javascript">
+    jQuery(function($) {
+        var myTable =
+                $('#dynamicTable')
+                        .DataTable( {
+                            bAutoWidth: false,
+                            "language": {
+                                "url": "../assets/js/zh_CN.json"
+                            },
+                            'order': [],
+                            "ordering": true,
+                            "processing": true,
+                            'paging': true,
+                            "serverSide": true,
+                            'searching': false,
+                            "ajax": function (data,callback,setting) {
+                                var formData = $("#searchForm").serialize();
+                                var pageNum=data.start/data.length+1;
+                                var pageSize=data.length;
+                                var draw=data.draw;
 
-        },
-        multiSort: true,//多列排序
-        height: "auto",
-        rownumbers: true,
-        mtype: "GET",
-        colNames: [
-                    "账号",
-                    "电话",
-                    "密码",
-                    "创建人",
-                    "最后修改人",
-                    "最后更新时间",
-                    "姓名",
-                    "地址",
-                    "性别，0-男，1-女",
-                    "邮箱",
-            '操作'
-        ],
-        colModel: [
-            {
-                name: "username",
-                align: "left",
-                index: "username"
-            },
-            {
-                name: "phone",
-                align: "left",
-                index: "phone"
-            },
-            {
-                name: "password",
-                align: "left",
-                index: "password"
-            },
-            {
-                name: "createBy",
-                align: "left",
-                index: "createBy"
-            },
-            {
-                name: "updateBy",
-                align: "left",
-                index: "updateBy"
-            },
-            {
-                name: "updateDate",
-                align: "left",
-                index: "updateDate"
-            },
-            {
-                name: "nickName",
-                align: "left",
-                index: "nickName"
-            },
-            {
-                name: "address",
-                align: "left",
-                index: "address"
-            },
-            {
-                name: "sex",
-                align: "left",
-                index: "sex"
-            },
-            {
-                name: "email",
-                align: "left",
-                index: "email"
-            },
-            {
-                name: '',
-                index: '',
-                align: "left",
-                sortable: false,
-                formatter: function (data, option, rowObject) {
-                    var html = "<a href='edit_form?id="+rowObject.id+"' class='btn btn-black btn-bitbucket' title='编辑生成配置' id='edit-deploy'><i class='fa fa-pencil'></i></a>" +
-                            "<a class='btn btn-black btn-bitbucket delete' title='删除生成配置'   data-id='"+rowObject.id+"'><i class='fa fa-trash-o'></i></a>"
-                    return html;
+                                var orderByClause="";
+                                var param="?pageNum="+pageNum+"&pageSize="+pageSize+"&"+formData+"&draw="+draw+"&od="+orderByClause;
+                                $.ajax({
+                                    "url": ctx + "api/user/sys_user/datatables"+param,
+                                    "type": "get",
+                                    dataType:"json",
+                                    contentType:'application/json',
+                                    "success": function (json) {
+                                        if (json.errcode == 0) {
+                                            var data = {};
+                                            data.recordsTotal = json.rslt.recordsTotal;
+                                            data.recordsFiltered = json.rslt.recordsFiltered;
+                                            data.data = json.rslt.data;
+                                            callback(data);
+                                        }
+                                    },
+                                    "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                                        // console.log(errorThrown);
+                                    }
+                                });
+                            },
+                            "columns": [
+                                        { "data": "账号" },
+                                        { "data": "电话" },
+                                        { "data": "姓名" },
+                                        { "data": "地址" },
+                                        { "data": "性别，0-男，1-女" },
+                                        { "data": "邮箱" },
+                                {"data": null}
+                            ],
+                            "columnDefs": [
+                                       {
+                                           "targets": 0,
+                                           'searchable': true,
+                                           'orderable': true,
+                                           "data": null,
+                                           "render": function (data, type, row) {
+                                               return '<td>' + data + '</td>';
+                                           },
+                                       },
+                                       {
+                                           "targets": 0,
+                                           'searchable': true,
+                                           'orderable': true,
+                                           "data": null,
+                                           "render": function (data, type, row) {
+                                               return '<td>' + data + '</td>';
+                                           },
+                                       },
+                                       {
+                                           "targets": 0,
+                                           'searchable': true,
+                                           'orderable': true,
+                                           "data": null,
+                                           "render": function (data, type, row) {
+                                               return '<td>' + data + '</td>';
+                                           },
+                                       },
+                                       {
+                                           "targets": 0,
+                                           'searchable': true,
+                                           'orderable': true,
+                                           "data": null,
+                                           "render": function (data, type, row) {
+                                               return '<td>' + data + '</td>';
+                                           },
+                                       },
+                                       {
+                                           "targets": 0,
+                                           'searchable': true,
+                                           'orderable': true,
+                                           "data": null,
+                                           "render": function (data, type, row) {
+                                               return '<td>' + data + '</td>';
+                                           },
+                                       },
+                                       {
+                                           "targets": 0,
+                                           'searchable': true,
+                                           'orderable': true,
+                                           "data": null,
+                                           "render": function (data, type, row) {
+                                               return '<td>' + data + '</td>';
+                                           },
+                                       },
+                                {
+                                    "targets": -1,
+                                    'searchable': false,
+                                    "orderable": false,
+                                    // "data": null,
+                                    "render": function (data, type, row) {
+                                        var div = '<div style="text-align: center">' +
+                                                '<a class="padding-left-5" id="edit" href="edit_form/?id='+data.id+'">编辑</a>' +
+                                                '<a class="padding-left-5" id="delBusiness" data-id="'+data.id+'">删除</a></div>'
+                                        return div;
+                                    }
+                                }
+                            ],
+                            select: {
+                                style: 'multi'
+                            }
+                        } );
+
+        $("#search").on("click",function(e){
+            // alert(0);
+            myTable.draw();
+        });
+
+
+        //删除
+        $(document).on("click","#delBusiness", function () {
+            var id = $(this).attr('data-id');
+            bootbox.confirm( {
+                message: "您真的要删除吗?",
+                buttons: {
+                    confirm: {
+                        label: '确定',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: '取消',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if(result){
+                        $.ajax({
+                            url:  ctx + "api/user/sys_user/"+id,
+                            method: "delete",
+                            success: function (data) {
+                                if(data.errcode==0){
+                                    myTable.draw();
+                                }else{
+                                    alert("删除数据出错！");
+                                }
+                            },
+                            error: function (data) {
+                                //console.log(data);
+                            }
+                        })
+                    }
                 }
-
-            }
-        ],
-        caption: null,
-        altRows: true,
-        pager: '#pager',
-        rowNum: 10,//一页显示多少条
-        rowList: [10, 20, 30],//可供用户选择一页显示多少条
-        viewrecords: true,
-        loadComplete: function () {
-            $("#table").setGridWidth($(window).width() * 0.95);
-        }
-    }).navGrid("#pager", {refresh: true, edit: false, search: false, add: false, view: false, del: false});
-
-    // 根据查询条件刷新表格
-    function RefreshTable() {
-        var formData = $("#search-form").serializeObject();
-        refreshTable(formData);
-    }
-
-    //点击查询查找指定搜索内容
-    $(document).on("click", "#search", function () {
-        RefreshTable();
-    });
-    //点击重置操作
-    $(document).on("click", "#reset", function () {
-        $("#search-form input").val("");
-        RefreshTable();
-    });
-
-
-    //删除操作
-    $(document).on("click", ".delete", function () {
-        var id  = $(this).attr("data-id");
-        //console.log(id);
-        $.ajax({
-            url: ctx + "api/user/sys_user/"+id,
-            method: "delete",
-            dataType: "json",
-            success: function (data) {
-                //console.log(data);
-                if(data.errcode==0){
-                    RefreshTable();
-                }else{
-                    alert("删除数据出错！");
-                }
-
-            },
-            error: function () {
-                console.log("error");
-            }
+            });
         })
-    });
 
-    //表格刷新
-    function refreshTable(dataType) {
-        $("#table").jqGrid('setGridParam', {
-            postData: dataType,
-            page: 1,
-            datatype: 'json'
-        }).trigger('reloadGrid');
-    }
-
-    //当窗口改变时设置表自动适应
-    $(window).bind('resize', function () {
-        var width = $('.jqGrid_wrapper').width();
-        $('#table').setGridWidth(width);
-    });
+    })
 </script>
-
-
 </body>
-
 </html>
