@@ -152,4 +152,12 @@
         </select>
 
 
+    <!--登录时使用-->
+    <select id="selectTel" resultType="com.jpm.ss.user.entity.SysUserEntity">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user a
+        WHERE a.phone = #{0}
+    </select>
+
 </mapper>

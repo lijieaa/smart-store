@@ -69,7 +69,7 @@ public class SysUserRestController {
     }
 
 
-
+    @ApiOperation("datatables表格分页")
     @PreAuthorize("hasAuthority('sys_user:view')")
     @RequestMapping(method = RequestMethod.GET, value = "datatables")
     public DataTablesResponseEntity<SysUserEntity> datatables(@RequestParam Map data) {
