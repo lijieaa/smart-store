@@ -66,7 +66,7 @@
                         .DataTable( {
                             bAutoWidth: false,
                             "language": {
-                                "url": "../assets/js/zh_CN.json"
+                                "url": "/assets/js/zh_CN.json"
                             },
                             'order': [],
                             "ordering": true,
@@ -81,6 +81,16 @@
                                 var draw=data.draw;
 
                                 var orderByClause="";
+
+                                for(var i=0;i<data.order.length;i++){
+                                    var obj=data.order[i];
+                                    var col=obj.column;
+                                    var dir=obj.dir;
+                                    var pro = data.columns[col].data;
+                                    orderByClause+=pro+" "+dir+",";
+                                }
+                                orderByClause = orderByClause.substr(0,orderByClause.lastIndexOf(","));
+
                                 var param="?pageNum="+pageNum+"&pageSize="+pageSize+"&"+formData+"&draw="+draw+"&od="+orderByClause;
                                 $.ajax({
                                     "url": ctx + "api/${moduleName}/${class_name}/datatables"+param,
@@ -104,10 +114,10 @@
                             "columns": [
                                  <#list table.cols as c>
                                      <#if c.isList?? && c.isList == "1">
-                                        { "data": "${c.comments}" },
+                                        { "data": "${c.simpleJavaField}" },
+                                        { "data": null }
                                      </#if>
                                  </#list>
-                                {"data": null}
                             ],
                             "columnDefs": [
                                  <#list table.cols as c>
@@ -116,7 +126,7 @@
                                            "targets": 0,
                                            'searchable': true,
                                            'orderable': true,
-                                           "data": null,
+                                           "data": "${c.simpleJavaField}",
                                            "render": function (data, type, row) {
                                                return '<td>' + data + '</td>';
                                            },
@@ -127,7 +137,6 @@
                                     "targets": -1,
                                     'searchable': false,
                                     "orderable": false,
-                                    // "data": null,
                                     "render": function (data, type, row) {
                                         var div = '<div style="text-align: center">' +
                                                 '<a class="padding-left-5" id="edit" href="edit_form/?id='+data.id+'">编辑</a>' +

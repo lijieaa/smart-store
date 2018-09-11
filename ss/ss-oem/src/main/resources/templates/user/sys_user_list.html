@@ -60,11 +60,12 @@
                         <tr>
                                         <th>账号</th>
                                         <th>电话</th>
+                                        <th>最后更新时间</th>
                                         <th>姓名</th>
                                         <th>地址</th>
                                         <th>性别，0-男，1-女</th>
                                         <th>邮箱</th>
-                            <th>操作功能</th>
+                                        <th>操作功能</th>
                         </tr>
                         </thead>
                     </table>
@@ -83,7 +84,7 @@
                         .DataTable( {
                             bAutoWidth: false,
                             "language": {
-                                "url": "../assets/js/zh_CN.json"
+                                "url": "/assets/js/zh_CN.json"
                             },
                             'order': [],
                             "ordering": true,
@@ -98,6 +99,15 @@
                                 var draw=data.draw;
 
                                 var orderByClause="";
+
+                                for(var i=0;i<data.order.length;i++){
+                                    var obj=data.order[i];
+                                    var col=obj.column;
+                                    var dir=obj.dir;
+                                    var pro = data.columns[col].data;
+                                    orderByClause+=pro+" "+dir+",";
+                                }
+                                orderByClause = orderByClause.substr(0,orderByClause.lastIndexOf(","));
                                 var param="?pageNum="+pageNum+"&pageSize="+pageSize+"&"+formData+"&draw="+draw+"&od="+orderByClause;
                                 $.ajax({
                                     "url": ctx + "api/user/sys_user/datatables"+param,
@@ -110,6 +120,7 @@
                                             data.recordsTotal = json.rslt.recordsTotal;
                                             data.recordsFiltered = json.rslt.recordsFiltered;
                                             data.data = json.rslt.data;
+                                            console.log(data);
                                             callback(data);
                                         }
                                     },
@@ -119,20 +130,21 @@
                                 });
                             },
                             "columns": [
-                                        { "data": "账号" },
-                                        { "data": "电话" },
-                                        { "data": "姓名" },
-                                        { "data": "地址" },
-                                        { "data": "性别，0-男，1-女" },
-                                        { "data": "邮箱" },
-                                {"data": null}
+                                        { "data": "username" },
+                                        { "data": "phone" },
+                                        { "data": "updateDate" },
+                                        { "data": "nickName" },
+                                        { "data": "address" },
+                                        { "data": "sex" },
+                                        { "data": "email" },
+                                        { "data": null }
                             ],
                             "columnDefs": [
                                        {
                                            "targets": 0,
                                            'searchable': true,
                                            'orderable': true,
-                                           "data": null,
+                                           "data": "username",
                                            "render": function (data, type, row) {
                                                return '<td>' + data + '</td>';
                                            },
@@ -141,7 +153,7 @@
                                            "targets": 0,
                                            'searchable': true,
                                            'orderable': true,
-                                           "data": null,
+                                           "data": "phone",
                                            "render": function (data, type, row) {
                                                return '<td>' + data + '</td>';
                                            },
@@ -150,7 +162,7 @@
                                            "targets": 0,
                                            'searchable': true,
                                            'orderable': true,
-                                           "data": null,
+                                           "data": "updateDate",
                                            "render": function (data, type, row) {
                                                return '<td>' + data + '</td>';
                                            },
@@ -159,7 +171,7 @@
                                            "targets": 0,
                                            'searchable': true,
                                            'orderable': true,
-                                           "data": null,
+                                           "data": "nickName",
                                            "render": function (data, type, row) {
                                                return '<td>' + data + '</td>';
                                            },
@@ -168,7 +180,7 @@
                                            "targets": 0,
                                            'searchable': true,
                                            'orderable': true,
-                                           "data": null,
+                                           "data": "address",
                                            "render": function (data, type, row) {
                                                return '<td>' + data + '</td>';
                                            },
@@ -177,7 +189,16 @@
                                            "targets": 0,
                                            'searchable': true,
                                            'orderable': true,
-                                           "data": null,
+                                           "data": "sex",
+                                           "render": function (data, type, row) {
+                                               return '<td>' + data + '</td>';
+                                           },
+                                       },
+                                       {
+                                           "targets": 0,
+                                           'searchable': true,
+                                           'orderable': true,
+                                           "data": "email",
                                            "render": function (data, type, row) {
                                                return '<td>' + data + '</td>';
                                            },
@@ -186,8 +207,8 @@
                                     "targets": -1,
                                     'searchable': false,
                                     "orderable": false,
-                                    // "data": null,
                                     "render": function (data, type, row) {
+                                        console.log(data);
                                         var div = '<div style="text-align: center">' +
                                                 '<a class="padding-left-5" id="edit" href="edit_form/?id='+data.id+'">编辑</a>' +
                                                 '<a class="padding-left-5" id="delBusiness" data-id="'+data.id+'">删除</a></div>'

@@ -1,4 +1,4 @@
-package com.jpm.ss;
+package com.jpm;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

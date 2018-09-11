@@ -14,7 +14,6 @@
         <module>ss-cus</module>
         <module>jpm-common</module>
         <module>jpm-generator</module>
-        <module>ss-service</module>
         <module>ss-oem</module>
         <module>ss-api</module>
     </modules>
