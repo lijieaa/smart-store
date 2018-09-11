@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <body layout:fragment="content">
-<div class="page-header" class="editCom">
+<div class="page-header editCom">
     <div class="float-left">
         <span class="header-list"></span><span class="header-font-style">{{userTitle}}</span>
     </div>
@@ -11,7 +11,7 @@
         <a href="@{list}" class="add-style color-white"></i>返回</a>
     </div>
 </div><!-- /.page-header -->
-<div class="row" class="editCom">
+<div class="row editCom">
     <div class="col-xs-12">
         <div class="row">
             <form class="form-horizontal" id="validation-form">
